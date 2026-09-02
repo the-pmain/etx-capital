@@ -43,7 +43,7 @@ export const ru = {
     name: "Имя",
     namePh: "Как к вам обращаться",
     phone: "Телефон",
-    phonePh: "+7 999 999-99-99 или +43…",
+    phonePh: "+7 985 142-32-39",
     email: "Email",
     optional: "(необязательно)",
     purpose: "Цель обращения",

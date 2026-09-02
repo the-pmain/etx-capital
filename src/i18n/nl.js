@@ -43,7 +43,7 @@ export const nl = {
     name: "Naam",
     namePh: "Hoe mogen we je aanspreken",
     phone: "Telefoon",
-    phonePh: "+7 999 999-99-99 of +43…",
+    phonePh: "+7 985 142-32-39",
     email: "E-mail",
     optional: "(optioneel)",
     purpose: "Reden van contact",

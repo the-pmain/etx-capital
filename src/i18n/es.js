@@ -43,7 +43,7 @@ export const es = {
     name: "Nombre",
     namePh: "Cómo debemos dirigirnos a ti",
     phone: "Teléfono",
-    phonePh: "+7 999 999-99-99 o +43…",
+    phonePh: "+7 985 142-32-39",
     email: "Correo electrónico",
     optional: "(opcional)",
     purpose: "Motivo del contacto",

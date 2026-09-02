@@ -3,8 +3,8 @@ export const site = {
   legalName: "ETX Marketing",
   url: "https://etx-marketing.com",
   email: "info@etx-marketing.com",
-  phone: "+4367849886698",
-  phoneDisplay: "+43 678 4988 6698",
+  phone: "+79851423239",
+  phoneDisplay: "+7 985 142-32-39",
   phoneRuNote: {
     ru: "",
     en: "",
