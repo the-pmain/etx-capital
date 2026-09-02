@@ -7,7 +7,7 @@ const operator = {
   name: "ETX-capital",
   inn: "772331755151",
   address: "г. Москва, ул. Малая Никитская, 33",
-  email: "info@etx-capital.com",
+  email: "info@etx-marketing.com",
 };
 
 const effectiveDate = {
@@ -35,7 +35,7 @@ export const policyContent = {
         id: "general",
         title: "1. Общие положения",
         paragraphs: [
-          "Настоящая Политика разработана в соответствии с Конституцией Российской Федерации и Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». Она применяется ко всей информации, которую оператор получает от пользователей сайта etx-capital.com.",
+          "Настоящая Политика разработана в соответствии с Конституцией Российской Федерации и Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных». Она применяется ко всей информации, которую оператор получает от пользователей сайта etx-marketing.com.",
           "Использование сайта без отправки формы не требует передачи имени, телефона или email. При отправке формы пользователь самостоятельно и добровольно предоставляет указанные в ней сведения.",
         ],
       },
@@ -152,7 +152,7 @@ export const policyContent = {
         id: "general",
         title: "1. General provisions",
         paragraphs: [
-          "This Policy is governed by the Constitution of the Russian Federation and Federal Law No. 152-FZ of 27 July 2006 on Personal Data. It applies to information received from users of etx-capital.com.",
+          "This Policy is governed by the Constitution of the Russian Federation and Federal Law No. 152-FZ of 27 July 2006 on Personal Data. It applies to information received from users of etx-marketing.com.",
           "Browsing the website does not require a visitor to provide a name, phone number, or email. Information entered into a form is provided voluntarily.",
         ],
       },

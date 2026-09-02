@@ -1,6 +1,15 @@
 RewriteEngine On
 RewriteBase /
+
+# Prefer real static files and prerendered directories.
 RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Directory index for prerendered routes (/about/ → /about/index.html).
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)$ $1/index.html [L]
+
+# SPA fallback for unknown paths.
 RewriteRule . /index.html [L]

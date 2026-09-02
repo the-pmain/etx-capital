@@ -2,7 +2,7 @@ const operator = {
   name: "ETX-capital",
   inn: "772331755151",
   address: "г. Москва, ул. Малая Никитская, 33",
-  email: "info@etx-capital.com",
+  email: "info@etx-marketing.com",
 };
 
 const effectiveDate = "31 août 2026";
@@ -27,7 +27,7 @@ export const frPolicyContent = {
       id: "general",
       title: "1. Dispositions générales",
       paragraphs: [
-        "La présente Politique est établie conformément à la Constitution de la Fédération de Russie et à la loi fédérale n° 152-FZ du 27 juillet 2006 relative aux données personnelles. Elle s’applique à toutes les informations que le responsable du traitement reçoit des utilisateurs du site etx-capital.com.",
+        "La présente Politique est établie conformément à la Constitution de la Fédération de Russie et à la loi fédérale n° 152-FZ du 27 juillet 2006 relative aux données personnelles. Elle s’applique à toutes les informations que le responsable du traitement reçoit des utilisateurs du site etx-marketing.com.",
         "La consultation du site sans envoi de formulaire ne nécessite pas la communication d’un nom, d’un numéro de téléphone ou d’une adresse e-mail. Lorsqu’il envoie un formulaire, l’utilisateur fournit les informations qui y figurent de manière volontaire et de sa propre initiative.",
       ],
     },

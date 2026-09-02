@@ -1,6 +1,6 @@
 # ETX Capital — developer app
 
-Vite + React (JavaScript) rebuild of [etx-capital.com](https://etx-capital.com/). Dark navy/gold career site, RU default, EN under `/en/`.
+Vite + React (JavaScript) rebuild of [etx-marketing.com](https://etx-marketing.com/). Dark navy/gold career site, RU default, EN under `/en/`.
 
 ```bash
 npm install

@@ -20,7 +20,7 @@ function LegalDocument({ content, policy = false }) {
 
   return (
     <>
-      <Seo locale={locale} title={`${content.title} — ETX`} description={content.description} />
+      <Seo locale={locale} title={`${content.title} — ETX Marketing`} description={content.description} />
       <header className="border-hairline bg-surface/35 border-b">
         <Container className="py-16 md:py-24">
           <p className="font-display text-gold text-xs font-semibold tracking-[0.16em] uppercase">{content.label}</p>

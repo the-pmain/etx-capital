@@ -2,7 +2,7 @@ const deOperator = {
   name: "ETX-capital",
   inn: "772331755151",
   address: "Moskau, ul. Malaya Nikitskaya 33",
-  email: "info@etx-capital.com",
+  email: "info@etx-marketing.com",
 };
 
 const deEffectiveDate = "31. August 2026";
@@ -26,7 +26,7 @@ export const dePolicyContent = {
       id: "general",
       title: "1. Allgemeine Bestimmungen",
       paragraphs: [
-        "Diese Richtlinie wurde in Übereinstimmung mit der Verfassung der Russischen Föderation und dem Föderalen Gesetz Nr. 152-FZ vom 27.07.2006 „Über personenbezogene Daten“ erstellt. Sie gilt für alle Informationen, die der Verantwortliche von Nutzern der Website etx-capital.com erhält.",
+        "Diese Richtlinie wurde in Übereinstimmung mit der Verfassung der Russischen Föderation und dem Föderalen Gesetz Nr. 152-FZ vom 27.07.2006 „Über personenbezogene Daten“ erstellt. Sie gilt für alle Informationen, die der Verantwortliche von Nutzern der Website etx-marketing.com erhält.",
         "Für die Nutzung der Website ohne Absenden eines Formulars müssen weder Name noch Telefonnummer oder E-Mail-Adresse angegeben werden. Beim Absenden eines Formulars stellt der Nutzer die darin angegebenen Informationen selbstständig und freiwillig bereit.",
       ],
     },

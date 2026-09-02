@@ -1,15 +1,16 @@
 import { defaultLocale, localeMeta, locales, site } from "@/config/site.js";
 import { stripLocale, withLocale } from "@/lib/paths.js";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 
 const schemaTopics = {
-  ru: ["Инвестиционные фонды", "Облигации", "Структурные продукты", "Портфельные стратегии"],
-  en: ["Investment funds", "Bonds", "Structured products", "Portfolio strategies"],
-  de: ["Investmentfonds", "Anleihen", "Strukturierte Produkte", "Portfoliostrategien"],
-  fr: ["Fonds d’investissement", "Obligations", "Produits structurés", "Stratégies de portefeuille"],
-  es: ["Fondos de inversión", "Bonos", "Productos estructurados", "Estrategias de cartera"],
-  nl: ["Beleggingsfondsen", "Obligaties", "Gestructureerde producten", "Portefeuillestrategieën"],
+  ru: ["Бренд-стратегия", "Digital-маркетинг", "Контент и креатив", "Go-to-market кампании"],
+  en: ["Brand strategy", "Digital marketing", "Content and creative", "Go-to-market campaigns"],
+  de: ["Markenstrategie", "Digitales Marketing", "Content und Kreativ", "Go-to-Market-Kampagnen"],
+  fr: ["Stratégie de marque", "Marketing digital", "Contenu et création", "Campagnes go-to-market"],
+  es: ["Estrategia de marca", "Marketing digital", "Contenido y creatividad", "Campañas go-to-market"],
+  nl: ["Merkstrategie", "Digitale marketing", "Content en creatie", "Go-to-marketcampagnes"],
 };
 
 export function Seo({ locale, title, description, jsonLd = [] }) {
@@ -24,89 +25,56 @@ export function Seo({ locale, title, description, jsonLd = [] }) {
   );
   const ogImage = locale === "en" ? `${site.url}/og-en.svg` : `${site.url}/og-default.svg`;
   const meta = localeMeta[locale];
-  const ldKey = JSON.stringify(jsonLd);
 
-  useEffect(() => {
-    document.documentElement.lang = meta.html;
-    document.title = title;
+  const org = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "ProfessionalService"],
+    name: site.name,
+    legalName: site.legalName,
+    url: `${site.url}/`,
+    email: site.email,
+    telephone: site.phone,
+    description,
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: site.address.country,
+      addressLocality: site.address.city[locale],
+      streetAddress: site.address.street[locale],
+    },
+    knowsLanguage: site.languages,
+    knowsAbout: schemaTopics[locale],
+    areaServed: "Europe",
+  };
 
-    const tags = [
-      ["name", "description", description],
-      ["property", "og:type", "website"],
-      ["property", "og:site_name", site.name],
-      ["property", "og:title", title],
-      ["property", "og:description", description],
-      ["property", "og:url", canonical],
-      ["property", "og:image", ogImage],
-      ["property", "og:image:width", "1200"],
-      ["property", "og:image:height", "630"],
-      ["property", "og:locale", meta.og],
-      ["name", "twitter:card", "summary_large_image"],
-      ["name", "theme-color", "#0a1017"],
-    ];
+  const structuredData = [org, ...jsonLd];
 
-    const nodes = tags.map(([key, name, content]) => {
-      let el = document.head.querySelector(`meta[${key}="${name}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(key, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-      return el;
-    });
-
-    const setLink = (rel, href, extra = {}) => {
-      const selector = extra.hreflang
-        ? `link[rel="${rel}"][hreflang="${extra.hreflang}"]`
-        : `link[rel="${rel}"]:not([hreflang])`;
-      let el = document.head.querySelector(selector);
-      if (!el) {
-        el = document.createElement("link");
-        el.setAttribute("rel", rel);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("href", href);
-      Object.entries(extra).forEach(([k, v]) => el.setAttribute(k, v));
-      return el;
-    };
-
-    setLink("canonical", canonical);
-    locales.forEach((code) => {
-      setLink("alternate", alternateUrls[code], { hreflang: localeMeta[code].hreflang });
-    });
-    setLink("alternate", alternateUrls[defaultLocale], { hreflang: "x-default" });
-
-    const org = {
-      "@context": "https://schema.org",
-      "@type": ["Organization", "ProfessionalService"],
-      name: site.name,
-      legalName: site.legalName,
-      url: `${site.url}/`,
-      email: site.email,
-      telephone: site.phone,
-      description,
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: site.address.country,
-        addressLocality: site.address.city[locale],
-        streetAddress: site.address.street[locale],
-      },
-      knowsLanguage: site.languages,
-      knowsAbout: schemaTopics[locale],
-      areaServed: "Europe",
-    };
-
-    let ld = document.getElementById("etx-jsonld");
-    if (!ld) {
-      ld = document.createElement("script");
-      ld.type = "application/ld+json";
-      ld.id = "etx-jsonld";
-      document.head.appendChild(ld);
-    }
-    ld.textContent = JSON.stringify([org, ...JSON.parse(ldKey)]);
-
-  }, [alternateUrls, canonical, description, ldKey, locale, meta.html, meta.og, ogImage, title]);
-
-  return null;
+  return (
+    <Helmet>
+      <html lang={meta.html} />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="theme-color" content="#0a1017" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content={site.name} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:locale" content={meta.og} />
+      {locales
+        .filter((code) => code !== locale)
+        .map((code) => (
+          <meta key={code} property="og:locale:alternate" content={localeMeta[code].og} />
+        ))}
+      <meta name="twitter:card" content="summary_large_image" />
+      <link rel="canonical" href={canonical} />
+      {locales.map((code) => (
+        <link key={code} rel="alternate" hrefLang={localeMeta[code].hreflang} href={alternateUrls[code]} />
+      ))}
+      <link rel="alternate" hrefLang="x-default" href={alternateUrls[defaultLocale]} />
+      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+    </Helmet>
+  );
 }

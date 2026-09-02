@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://etx-capital.com/sitemap-index.xml
+Sitemap: https://etx-marketing.com/sitemap-index.xml

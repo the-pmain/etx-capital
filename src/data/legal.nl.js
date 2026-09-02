@@ -2,7 +2,7 @@ const operator = {
   name: "ETX-capital",
   inn: "772331755151",
   address: "Malaya Nikitskaya Street 33, Moskou",
-  email: "info@etx-capital.com",
+  email: "info@etx-marketing.com",
 };
 
 const effectiveDate = "31 augustus 2026";
@@ -26,7 +26,7 @@ export const nlPolicyContent = {
       id: "general",
       title: "1. Algemene bepalingen",
       paragraphs: [
-        "Dit beleid is opgesteld overeenkomstig de Grondwet van de Russische Federatie en Federale Wet nr. 152-FZ van 27 juli 2006 inzake persoonsgegevens. Het is van toepassing op alle informatie die de verwerkingsverantwoordelijke ontvangt van gebruikers van etx-capital.com.",
+        "Dit beleid is opgesteld overeenkomstig de Grondwet van de Russische Federatie en Federale Wet nr. 152-FZ van 27 juli 2006 inzake persoonsgegevens. Het is van toepassing op alle informatie die de verwerkingsverantwoordelijke ontvangt van gebruikers van etx-marketing.com.",
         "Voor het bezoeken van de website hoeft een bezoeker geen naam, telefoonnummer of e-mailadres te verstrekken. Gegevens die via een formulier worden verzonden, worden door de gebruiker zelfstandig en vrijwillig verstrekt.",
       ],
     },

@@ -76,6 +76,9 @@ export default defineConfig({
       "@": path.resolve(root, "src"),
     },
   },
+  ssr: {
+    noExternal: ["react-helmet-async"],
+  },
   server: {
     port: 5173,
     open: false,

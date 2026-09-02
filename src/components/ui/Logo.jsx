@@ -1,4 +1,4 @@
-export function Logo({ className = "h-6 w-auto text-ink", label = "ETX" }) {
+export function Logo({ className = "h-6 w-auto text-ink", label = "ETX Marketing" }) {
   return (
     <svg viewBox="0 0 96 40" role="img" aria-label={label} className={className} fill="none">
       <rect x="2" y="6" width="4" height="28" fill="currentColor" />

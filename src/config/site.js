@@ -1,8 +1,8 @@
 export const site = {
-  name: "ETX",
-  legalName: "ETX Capital",
-  url: "https://etx-capital.com",
-  email: "info@etx-capital.com",
+  name: "ETX Marketing",
+  legalName: "ETX Marketing",
+  url: "https://etx-marketing.com",
+  email: "info@etx-marketing.com",
   phone: "+4367849886698",
   phoneDisplay: "+43 678 4988 6698",
   phoneRuNote: {
@@ -58,12 +58,12 @@ export const site = {
     {
       value: "2016",
       label: {
-        ru: "работаем с международными рынками",
-        en: "working with international markets",
-        de: "auf internationalen Märkten tätig",
-        fr: "actifs sur les marchés internationaux",
-        es: "operando en mercados internacionales",
-        nl: "actief op internationale markten",
+        ru: "работаем с международными брендами",
+        en: "working with international brands",
+        de: "für internationale Marken tätig",
+        fr: "au service de marques internationales",
+        es: "trabajando con marcas internacionales",
+        nl: "actief voor internationale merken",
       },
     },
     {
@@ -80,12 +80,12 @@ export const site = {
     {
       value: { ru: "Европа", en: "Europe", de: "Europa", fr: "Europe", es: "Europa", nl: "Europa" },
       label: {
-        ru: "география решений",
-        en: "solution geography",
-        de: "Region unserer Lösungen",
-        fr: "zone géographique des solutions",
-        es: "ámbito geográfico de las soluciones",
-        nl: "geografische reikwijdte",
+        ru: "география кампаний",
+        en: "campaign geography",
+        de: "Region unserer Kampagnen",
+        fr: "zone géographique des campagnes",
+        es: "ámbito geográfico de las campañas",
+        nl: "geografische reikwijdte van campagnes",
       },
     },
   ],
