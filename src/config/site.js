@@ -3,8 +3,8 @@ export const site = {
   legalName: "ETX Marketing",
   url: "https://etx-marketing.com",
   email: "info@etx-marketing.com",
-  phone: "+79851423239",
-  phoneDisplay: "+7 985 142-32-39",
+  phone: "+79851423293",
+  phoneDisplay: "+7 985 142-32-93",
   phoneRuNote: {
     ru: "",
     en: "",
@@ -13,6 +13,8 @@ export const site = {
     es: "",
     nl: "",
   },
+  telegram: "https://t.me/aliccciia",
+  telegramHandle: "@aliccciia",
   hhUrl: "https://hh.ru/employer/12889289",
   languages: ["ru", "en", "de", "fr", "es", "nl"],
   hours: {

@@ -43,7 +43,7 @@ export const de = {
     name: "Name",
     namePh: "Wie dürfen wir Sie ansprechen",
     phone: "Telefon",
-    phonePh: "+7 985 142-32-39",
+    phonePh: "+7 985 142-32-93",
     email: "E-Mail",
     optional: "(optional)",
     purpose: "Grund der Kontaktaufnahme",
@@ -74,8 +74,10 @@ export const de = {
     phoneInvalid: "Geben Sie eine gültige internationale Telefonnummer ein",
     emailInvalid: "Bitte prüfen Sie die E-Mail-Adresse",
     consentRequired: "Ohne Ihre Einwilligung können wir die Anfrage nicht bearbeiten",
-    sendError: "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns per E-Mail.",
-    rateLimit: "Zu viele Anfragen von diesem Gerät. Bitte versuchen Sie es in wenigen Minuten erneut.",
+    techTitle: "Technische Störung",
+    techText:
+      "Das Formular kann derzeit nicht gesendet werden. Rufen Sie die Nummer im Seitenfuß an oder schreiben Sie uns auf Telegram — wir antworten genauso schnell.",
+    techTelegram: "Auf Telegram schreiben",
   },
   home: {
     seoTitle: "Karriere im internationalen Marketing — ETX Marketing",
@@ -166,7 +168,7 @@ export const de = {
     teamNote:
       "Ein Recruiter erklärt Berichtslinie, Teamstruktur und Interviewteilnehmer im vertraulichen Einführungsgespräch.",
     teamLabel: "Wer im Team ist",
-    roles: ["CEO", "Head of Sales", "Team Lead", "HR Director", "Senior Marketing Advisor"],
+    roles: ["CEO", "Head of Sales", "Team Lead", "Команда HR", "Senior Marketing Advisor"],
     profileOnRequest: "Profil auf Anfrage",
     ctaTitle: "ETX Marketing für Ihren nächsten Schritt im Marketing in Betracht ziehen",
     ctaText: "Starten Sie mit einem vertraulichen Recruiter-Gespräch über Ihren Hintergrund, die Rolle Marketing Advisor und die Arbeitsbedingungen.",

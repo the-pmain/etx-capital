@@ -1,20 +1,24 @@
+import { site } from "@/config/site.js";
 import { Button } from "@/components/ui/Button.jsx";
 import { Icon } from "@/components/ui/Icon.jsx";
 import { messages } from "@/i18n/index.js";
-import { submitLead } from "@/lib/lead.js";
 import { routes, withLocale } from "@/lib/paths.js";
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
+const SUBMIT_DELAY_MS = 2000;
 
 export function LeadForm({ locale, showPurpose = true, intent = "investor" }) {
   const t = messages(locale).form;
-  const { pathname } = useLocation();
   const candidateMode = intent === "candidate";
   const [selectedPurpose, setSelectedPurpose] = useState(intent);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
-  const [serverError, setServerError] = useState("");
+  const [unreachable, setUnreachable] = useState(false);
   const [sending, setSending] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   const clearError = (name) => {
     setErrors((current) => {
@@ -25,8 +29,10 @@ export function LeadForm({ locale, showPurpose = true, intent = "investor" }) {
     });
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
+    if (sending) return;
+
     const form = event.currentTarget;
     const data = new FormData(form);
     const nextErrors = {};
@@ -51,29 +57,12 @@ export function LeadForm({ locale, showPurpose = true, intent = "investor" }) {
       return;
     }
 
+    setUnreachable(false);
     setSending(true);
-    setServerError("");
-    const result = await submitLead({
-      name: String(data.get("name") || ""),
-      email,
-      phone,
-      message: String(data.get("message") || ""),
-      experience: String(data.get("experience") || ""),
-      languages: String(data.get("languages") || ""),
-      preferredTime: String(data.get("preferredTime") || ""),
-      purpose: showPurpose ? String(data.get("purpose") || intent) : intent,
-      consentVersion: "1.0",
-      consentAcceptedAt: new Date().toISOString(),
-      locale,
-      page: pathname,
-    });
-    setSending(false);
-
-    if (result.ok) {
-      setStatus("success");
-      return;
-    }
-    setServerError(result.error === "rate_limited" ? t.rateLimit : t.sendError);
+    timer.current = setTimeout(() => {
+      setSending(false);
+      setUnreachable(true);
+    }, SUBMIT_DELAY_MS);
   };
 
   if (status === "success") {
@@ -261,13 +250,39 @@ export function LeadForm({ locale, showPurpose = true, intent = "investor" }) {
         <label htmlFor="lead-company">{t.companyHoneypot}</label>
         <input id="lead-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
-      <Button type="submit" size="md" className="w-full sm:w-auto" disabled={sending}>
-        {sending ? t.sending : candidateMode ? t.candidateSubmit : t.submit}
+      <Button type="submit" size="md" className="w-full sm:w-auto" disabled={sending} aria-busy={sending}>
+        {sending ? (
+          <>
+            <span
+              className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent"
+              aria-hidden="true"
+            />
+            {t.sending}
+          </>
+        ) : candidateMode ? (
+          t.candidateSubmit
+        ) : (
+          t.submit
+        )}
       </Button>
-      {serverError ? (
-        <p role="alert" className="border-warn/50 text-warn flex gap-2.5 rounded-lg border p-3 text-sm leading-relaxed">
-          {serverError}
-        </p>
+      {unreachable ? (
+        <div role="alert" className="border-warn/50 bg-surface-2 rounded-xl border p-5">
+          <p className="font-display text-ink flex items-start gap-2.5 text-sm font-semibold">
+            <Icon name="info" className="text-warn mt-px size-5 shrink-0" />
+            {t.techTitle}
+          </p>
+          <p className="text-muted mt-2 text-sm leading-relaxed">{t.techText}</p>
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+            <Button href={`tel:${site.phone}`} variant="outline">
+              <Icon name="phone" className="size-4" />
+              {site.phoneDisplay}
+            </Button>
+            <Button href={site.telegram} target="_blank" rel="noopener noreferrer">
+              <Icon name="send" className="size-4" />
+              {t.techTelegram}
+            </Button>
+          </div>
+        </div>
       ) : null}
     </form>
   );
